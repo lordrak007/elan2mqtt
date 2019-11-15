@@ -209,7 +209,9 @@ async def main():
     # perfrom login
     # it should result in new AuthID cookie
     logger.info("Authenticating to eLAN")
+    logger.debug("Adress: "+args.elan_url + '/login' + "Creds: "+credentials)
     resp = await session.post(args.elan_url + '/login',data=credentials)
+    logger.debug("Response: "+resp)
 
     # Get list of devices
     # If we are not athenticated if will raise exception due to json
