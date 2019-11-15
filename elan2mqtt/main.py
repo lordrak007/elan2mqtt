@@ -202,8 +202,9 @@ async def main():
     }
     logger.info("Are we already authenticated? E.g. API check")
     # dirty check if we are authenticated and to get session
-    resp = await session.get(args.elan_url + '/api', timeout=3)
+    #resp = await session.get(args.elan_url + '/api', timeout=3)
     # !!! check is not implemented yet !!!
+    logger.info("Are we already authenticated? Skipped for end of time!")
 
     # perfrom login
     # it should result in new AuthID cookie
