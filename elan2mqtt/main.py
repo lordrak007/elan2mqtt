@@ -200,19 +200,21 @@ async def main():
     'name': args.elan_user[0],
     'key': hash
     }
-    logger.info("Are we already authenticated? E.g. API check")
+    try:
+    
+      logger.info("Are we already authenticated? E.g. API check")
     # dirty check if we are authenticated and to get session
     #resp = await session.get(args.elan_url + '/api', timeout=3)
     # !!! check is not implemented yet !!!
-    logger.info("Are we already authenticated? Skipped for end of time!")
+      logger.info("Are we already authenticated? Skipped for end of time!")
 
     # perfrom login
     # it should result in new AuthID cookie
-    logger.info("Authenticating to eLAN")
-    logger.debug("Adress: "+args.elan_url + '/login' + "Creds: "+credentials)
-    resp = await session.post(args.elan_url + '/login',data=credentials)
-    logger.debug("Response: "+resp)
-
+      logger.info("Authenticating to eLAN")
+      logger.debug("Adress: "+args.elan_url + '/login' + "Creds: "+credentials)
+      resp = await session.post(args.elan_url + '/login',data=credentials)
+      logger.debug("Response: "+resp)
+    except Exception as e: print(e)
     # Get list of devices
     # If we are not athenticated if will raise exception due to json
     # --> it triggers loop reset with new authenticatin attempt
